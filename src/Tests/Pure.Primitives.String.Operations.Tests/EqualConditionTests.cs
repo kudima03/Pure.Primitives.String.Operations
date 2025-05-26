@@ -18,6 +18,14 @@ public sealed record EqualConditionTests
     }
 
     [Fact]
+    public void TakesPositiveResultOnTwoSameValues()
+    {
+        IBool equality = new EqualCondition(new String("Hello, world!"), new String("Hello, world!"));
+
+        Assert.True(equality.Value);
+    }
+
+    [Fact]
     public void TakesNegativeResultOnDifferentValues()
     {
         IBool equality = new EqualCondition(
@@ -41,6 +49,13 @@ public sealed record EqualConditionTests
             new String("Hello, world!1"));
 
         Assert.False(equality.Value);
+    }
+
+    [Fact]
+    public void ThrowsExceptionOnSingleElementInCollection()
+    {
+        IBool equality = new NotEqualCondition(new EmptyString());
+        Assert.Throws<ArgumentException>(() => equality.Value);
     }
 
     [Fact]

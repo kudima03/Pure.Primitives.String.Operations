@@ -18,7 +18,7 @@ public sealed record EqualCondition : IBool
     {
         get
         {
-            if (!_values.Any())
+            if (_values.Take(2).Count() < 2)
             {
                 throw new ArgumentException();
             }
