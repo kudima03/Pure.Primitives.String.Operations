@@ -1,5 +1,7 @@
-﻿using Pure.Primitives.Abstractions.Number;
+﻿using Pure.Primitives.Abstractions.Char;
+using Pure.Primitives.Abstractions.Number;
 using Pure.Primitives.Abstractions.String;
+using System.Collections;
 
 namespace Pure.Primitives.String.Operations;
 
@@ -18,12 +20,19 @@ public sealed record Substring : IString
         _length = length;
     }
 
-    string IString.Value
+    string IString.Value => ValueInternal;
+
+    private string ValueInternal
     {
         get
         {
             return _source.Value.Substring(_startIndex.Value, _length.Value);
         }
+    }
+
+    public IEnumerator<IChar> GetEnumerator()
+    {
+        return ValueInternal.Select(symbol => new Char.Char(symbol)).GetEnumerator();
     }
 
     public override int GetHashCode()
@@ -34,5 +43,10 @@ public sealed record Substring : IString
     public override string ToString()
     {
         throw new NotSupportedException();
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
     }
 }

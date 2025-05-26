@@ -1,4 +1,6 @@
-﻿using Pure.Primitives.Abstractions.String;
+﻿using Pure.Primitives.Abstractions.Char;
+using Pure.Primitives.Abstractions.String;
+using System.Collections;
 
 namespace Pure.Primitives.String.Operations;
 
@@ -13,7 +15,9 @@ public sealed record ConcatenatedString : IString
         _parameters = parameters;
     }
 
-    string IString.Value
+    string IString.Value => ValueInternal;
+
+    private string ValueInternal
     {
         get
         {
@@ -26,6 +30,11 @@ public sealed record ConcatenatedString : IString
         }
     }
 
+    public IEnumerator<IChar> GetEnumerator()
+    {
+        return ValueInternal.Select(symbol => new Char.Char(symbol)).GetEnumerator();
+    }
+
     public override int GetHashCode()
     {
         throw new NotSupportedException();
@@ -34,5 +43,10 @@ public sealed record ConcatenatedString : IString
     public override string ToString()
     {
         throw new NotSupportedException();
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
     }
 }
