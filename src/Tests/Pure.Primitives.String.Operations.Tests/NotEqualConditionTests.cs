@@ -18,6 +18,14 @@ public sealed record NotEqualConditionTests
     }
 
     [Fact]
+    public void TakesNegativeResultOnTwoSameValues()
+    {
+        IBool equality = new NotEqualCondition(new String("Hello, world!"), new String("Hello, world!"));
+
+        Assert.False(equality.Value);
+    }
+
+    [Fact]
     public void TakesPositiveResultOnDifferentValues()
     {
         IBool equality = new NotEqualCondition(
