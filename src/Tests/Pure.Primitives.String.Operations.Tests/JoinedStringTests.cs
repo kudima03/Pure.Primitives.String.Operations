@@ -19,19 +19,19 @@ public sealed record JoinedStringTests
     [Fact]
     public void ThrowsExceptionOnEmptyArguments()
     {
-        IString str = new JoinedString(new String(string.Empty), []);
+        IString str = new JoinedString(new EmptyString(), []);
         Assert.Throws<ArgumentException>(() => str.Value);
     }
 
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new JoinedString(new String(string.Empty), []).GetHashCode());
+        Assert.Throws<NotSupportedException>(() => new JoinedString(new EmptyString(), []).GetHashCode());
     }
 
     [Fact]
     public void ThrowsExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new JoinedString(new String(string.Empty), []).ToString());
+        Assert.Throws<NotSupportedException>(() => new JoinedString(new EmptyString(), []).ToString());
     }
 }
