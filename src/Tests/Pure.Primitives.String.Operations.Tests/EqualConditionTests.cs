@@ -53,12 +53,12 @@ public sealed record EqualConditionTests
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
-        Assert.Throws<InvalidOperationException>(() => new EqualCondition(new EmptyString()).GetHashCode());
+        Assert.Throws<NotSupportedException>(() => new EqualCondition(new EmptyString()).GetHashCode());
     }
 
     [Fact]
     public void ThrowsExceptionOnToString()
     {
-        Assert.Throws<InvalidOperationException>(() => new EqualCondition(new EmptyString()).ToString());
+        Assert.Throws<NotSupportedException>(() => new EqualCondition(new EmptyString()).ToString());
     }
 }
