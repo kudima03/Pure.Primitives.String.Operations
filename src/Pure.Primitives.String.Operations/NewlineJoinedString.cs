@@ -6,7 +6,7 @@ public sealed record NewLineJoinedString : IString
 {
     private readonly IString _separator;
 
-    private readonly IEnumerable<IString> _values;
+    public NewLineJoinedString(params IString[] values) : this(values.AsReadOnly()) { }
 
     public NewLineJoinedString(IEnumerable<IString> values)
     {
