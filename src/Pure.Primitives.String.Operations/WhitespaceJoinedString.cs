@@ -4,27 +4,16 @@ namespace Pure.Primitives.String.Operations;
 
 public sealed record WhitespaceJoinedString : IString
 {
-    private readonly IString _separator;
-
-    private readonly IEnumerable<IString> _values;
+    private readonly IString _joinedString;
 
     public WhitespaceJoinedString(params IString[] values) : this(values.AsReadOnly()) { }
 
     public WhitespaceJoinedString(IEnumerable<IString> values)
     {
-        _separator = new WhitespaceString();
-        _values = values;
+        _joinedString = new JoinedString(new WhitespaceString(), values);
     }
 
-    string IString.Value
-    {
-        get
-        {
-            IString joinedString = new JoinedString(_separator, _values);
-
-            return joinedString.Value;
-        }
-    }
+    string IString.Value => _joinedString.Value;
 
     public override int GetHashCode()
     {
