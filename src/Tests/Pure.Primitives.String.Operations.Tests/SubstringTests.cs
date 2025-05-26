@@ -52,7 +52,7 @@ public sealed record SubstringTests
         IString str = new Substring(source, new UShort(startIndex), new UShort(length));
         Assert.Equal(string.Empty, str.Value);
     }
-    
+
 
     [Fact]
     public void TakesEmptySubstringFromEmptyStringOnZeroLength()
@@ -65,7 +65,7 @@ public sealed record SubstringTests
         IString str = new Substring(source, new UShort(startIndex), new UShort(length));
         Assert.Equal(string.Empty, str.Value);
     }
-    
+
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
