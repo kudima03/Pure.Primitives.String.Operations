@@ -18,12 +18,9 @@ public sealed record WhitespaceJoinedString : IString
     {
         get
         {
-            if (!_values.Any())
-            {
-                throw new ArgumentException();
-            }
+            IString joinedString = new JoinedString(_separator, _values);
 
-            return string.Join(_separator.Value, _values.Select(x => x.Value));
+            return joinedString.Value;
         }
     }
 
