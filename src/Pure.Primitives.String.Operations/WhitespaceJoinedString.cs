@@ -8,6 +8,8 @@ public sealed record WhitespaceJoinedString : IString
 
     private readonly IEnumerable<IString> _values;
 
+    public WhitespaceJoinedString(params IString[] values) : this(values.AsReadOnly()) { }
+
     public WhitespaceJoinedString(IEnumerable<IString> values)
     {
         _separator = new WhitespaceString();
