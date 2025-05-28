@@ -21,7 +21,7 @@ public sealed record ConcatenatedStringTests
             new String(d),
             new String(e));
 
-        Assert.Equal(string.Concat(a, b, c, d, e), str.Value);
+        Assert.Equal(string.Concat(a, b, c, d, e), str.TextValue);
     }
 
     [Fact]
@@ -40,7 +40,7 @@ public sealed record ConcatenatedStringTests
             new String(d),
             new String(e));
 
-        Assert.True(string.Concat(a, b, c, d, e).SequenceEqual(str.Select(x => x.Value)));
+        Assert.True(string.Concat(a, b, c, d, e).SequenceEqual(str.Select(x => x.CharValue)));
     }
 
     [Fact]
@@ -66,14 +66,14 @@ public sealed record ConcatenatedStringTests
             symbols.Add((symbol as IChar)!);
         }
 
-        Assert.True(string.Concat(a, b, c, d, e).SequenceEqual(symbols.Select(x => x.Value)));
+        Assert.True(string.Concat(a, b, c, d, e).SequenceEqual(symbols.Select(x => x.CharValue)));
     }
 
     [Fact]
     public void ThrowsExceptionOnEmptyArguments()
     {
         IString str = new ConcatenatedString();
-        Assert.Throws<ArgumentException>(() => str.Value);
+        Assert.Throws<ArgumentException>(() => str.TextValue);
     }
 
     [Fact]

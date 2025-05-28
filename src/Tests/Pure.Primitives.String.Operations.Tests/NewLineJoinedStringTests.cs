@@ -15,7 +15,7 @@ public sealed record NewLineJoinedStringTests
         const string c = "!";
 
         IString str = new NewLineJoinedString([new String(a), new String(b), new String(c)]);
-        Assert.Equal(string.Join(separator, a, b, c), str.Value);
+        Assert.Equal(string.Join(separator, a, b, c), str.TextValue);
     }
 
     [Fact]
@@ -28,7 +28,7 @@ public sealed record NewLineJoinedStringTests
 
         IString str = new NewLineJoinedString([new String(a), new String(b), new String(c)]);
 
-        Assert.True(string.Join(separator, a, b, c).SequenceEqual(str.Select(x => x.Value)));
+        Assert.True(string.Join(separator, a, b, c).SequenceEqual(str.Select(x => x.CharValue)));
     }
 
     [Fact]
@@ -48,14 +48,14 @@ public sealed record NewLineJoinedStringTests
             symbols.Add((symbol as IChar)!);
         }
 
-        Assert.True(string.Join(separator, a, b, c).SequenceEqual(symbols.Select(x => x.Value)));
+        Assert.True(string.Join(separator, a, b, c).SequenceEqual(symbols.Select(x => x.CharValue)));
     }
 
     [Fact]
     public void ThrowsExceptionOnEmptyArguments()
     {
         IString str = new NewLineJoinedString([]);
-        Assert.Throws<ArgumentException>(() => str.Value);
+        Assert.Throws<ArgumentException>(() => str.TextValue);
     }
 
     [Fact]

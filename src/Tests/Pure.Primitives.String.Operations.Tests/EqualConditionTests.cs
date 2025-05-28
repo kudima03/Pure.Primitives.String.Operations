@@ -14,7 +14,7 @@ public sealed record EqualConditionTests
             new String("Hello, world!"),
             new String("Hello, world!"));
 
-        Assert.True(equality.Value);
+        Assert.True(equality.BoolValue);
     }
 
     [Fact]
@@ -22,7 +22,7 @@ public sealed record EqualConditionTests
     {
         IBool equality = new EqualCondition(new String("Hello, world!"), new String("Hello, world!"));
 
-        Assert.True(equality.Value);
+        Assert.True(equality.BoolValue);
     }
 
     [Fact]
@@ -35,7 +35,7 @@ public sealed record EqualConditionTests
             new String("Hello, world!4"),
             new String("Hello, world!5"));
 
-        Assert.False(equality.Value);
+        Assert.False(equality.BoolValue);
     }
 
     [Fact]
@@ -48,21 +48,21 @@ public sealed record EqualConditionTests
             new String("Hello, world!"),
             new String("Hello, world!1"));
 
-        Assert.False(equality.Value);
+        Assert.False(equality.BoolValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnSingleElementInCollection()
     {
         IBool equality = new NotEqualCondition(new EmptyString());
-        Assert.Throws<ArgumentException>(() => equality.Value);
+        Assert.Throws<ArgumentException>(() => equality.BoolValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnEmptyCollection()
     {
         IBool equality = new EqualCondition();
-        Assert.Throws<ArgumentException>(() => equality.Value);
+        Assert.Throws<ArgumentException>(() => equality.BoolValue);
     }
 
     [Fact]

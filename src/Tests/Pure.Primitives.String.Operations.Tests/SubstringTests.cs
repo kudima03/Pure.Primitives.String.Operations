@@ -16,7 +16,7 @@ public sealed record SubstringTests
         const ushort length = 4;
 
         IString str = new Substring(source, new UShort(startIndex), new UShort(length));
-        Assert.Equal(source.Value.Substring(startIndex, length), str.Value);
+        Assert.Equal(source.TextValue.Substring(startIndex, length), str.TextValue);
     }
 
     [Fact]
@@ -31,7 +31,7 @@ public sealed record SubstringTests
 
         IString str = new Substring(source, new UShort(startIndex), new UShort(length));
 
-        Assert.True(sample.Substring(startIndex, length).SequenceEqual(str.Select(x => x.Value)));
+        Assert.True(sample.Substring(startIndex, length).SequenceEqual(str.Select(x => x.CharValue)));
     }
 
     [Fact]
@@ -53,7 +53,7 @@ public sealed record SubstringTests
             symbols.Add((symbol as IChar)!);
         }
 
-        Assert.True(sample.Substring(startIndex, length).SequenceEqual(symbols.Select(x => x.Value)));
+        Assert.True(sample.Substring(startIndex, length).SequenceEqual(symbols.Select(x => x.CharValue)));
     }
 
     [Fact]
@@ -65,7 +65,7 @@ public sealed record SubstringTests
         const ushort length = 7;
 
         IString str = new Substring(source, new UShort(startIndex), new UShort(length));
-        Assert.Throws<ArgumentOutOfRangeException>(() => str.Value);
+        Assert.Throws<ArgumentOutOfRangeException>(() => str.TextValue);
     }
 
     [Fact]
@@ -77,7 +77,7 @@ public sealed record SubstringTests
         const ushort length = 4;
 
         IString str = new Substring(source, new UShort(startIndex), new UShort(length));
-        Assert.Throws<ArgumentOutOfRangeException>(() => str.Value);
+        Assert.Throws<ArgumentOutOfRangeException>(() => str.TextValue);
     }
 
     [Fact]
@@ -89,7 +89,7 @@ public sealed record SubstringTests
         const ushort length = 0;
 
         IString str = new Substring(source, new UShort(startIndex), new UShort(length));
-        Assert.Equal(string.Empty, str.Value);
+        Assert.Equal(string.Empty, str.TextValue);
     }
 
 
@@ -102,7 +102,7 @@ public sealed record SubstringTests
         const ushort length = 0;
 
         IString str = new Substring(source, new UShort(startIndex), new UShort(length));
-        Assert.Equal(string.Empty, str.Value);
+        Assert.Equal(string.Empty, str.TextValue);
     }
 
     [Fact]
