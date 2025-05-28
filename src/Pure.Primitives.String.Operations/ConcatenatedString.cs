@@ -15,7 +15,7 @@ public sealed record ConcatenatedString : IString
         _parameters = parameters;
     }
 
-    string IString.Value => ValueInternal;
+    string IString.TextValue => ValueInternal;
 
     private string ValueInternal
     {
@@ -26,7 +26,7 @@ public sealed record ConcatenatedString : IString
                 throw new ArgumentException();
             }
 
-            return string.Concat(_parameters.Select(x => x.Value));
+            return string.Concat(_parameters.Select(x => x.TextValue));
         }
     }
 

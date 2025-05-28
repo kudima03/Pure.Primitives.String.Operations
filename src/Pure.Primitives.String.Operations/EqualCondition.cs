@@ -14,7 +14,7 @@ public sealed record EqualCondition : IBool
         _values = values;
     }
 
-    bool IBool.Value
+    bool IBool.BoolValue
     {
         get
         {
@@ -23,7 +23,7 @@ public sealed record EqualCondition : IBool
                 throw new ArgumentException();
             }
 
-            return _values.DistinctBy(x => x.Value).Count() == 1;
+            return _values.DistinctBy(x => x.TextValue).Count() == 1;
         }
     }
 

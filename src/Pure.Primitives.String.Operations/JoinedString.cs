@@ -16,7 +16,7 @@ public sealed record JoinedString : IString
         _values = values;
     }
 
-    string IString.Value => ValueInternal;
+    string IString.TextValue => ValueInternal;
 
 
     private string ValueInternal
@@ -28,7 +28,7 @@ public sealed record JoinedString : IString
                 throw new ArgumentException();
             }
 
-            return string.Join(_separator.Value, _values.Select(x => x.Value));
+            return string.Join(_separator.TextValue, _values.Select(x => x.TextValue));
         }
     }
 

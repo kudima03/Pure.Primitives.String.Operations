@@ -15,7 +15,7 @@ public sealed record NewLineJoinedString : IString
         _joinedString = new JoinedString(new NewLineString(), values);
     }
 
-    string IString.Value => _joinedString.Value;
+    string IString.TextValue => _joinedString.TextValue;
 
     public IEnumerator<IChar> GetEnumerator()
     {

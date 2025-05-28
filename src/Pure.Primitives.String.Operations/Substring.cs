@@ -20,13 +20,13 @@ public sealed record Substring : IString
         _length = length;
     }
 
-    string IString.Value => ValueInternal;
+    string IString.TextValue => ValueInternal;
 
     private string ValueInternal
     {
         get
         {
-            return _source.Value.Substring(_startIndex.Value, _length.Value);
+            return _source.TextValue.Substring(_startIndex.NumberValue, _length.NumberValue);
         }
     }
 
