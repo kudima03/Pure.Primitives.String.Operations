@@ -52,10 +52,10 @@ public sealed record JoinedStringTests
     }
 
     [Fact]
-    public void ThrowsExceptionOnEmptyArguments()
+    public void ProduceEmptyStringOnEmptyArguments()
     {
         IString str = new JoinedString(new EmptyString(), []);
-        Assert.Throws<ArgumentException>(() => str.TextValue);
+        Assert.Empty(str.TextValue);
     }
 
     [Fact]

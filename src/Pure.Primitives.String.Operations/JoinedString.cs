@@ -18,19 +18,7 @@ public sealed record JoinedString : IString
 
     string IString.TextValue => ValueInternal;
 
-
-    private string ValueInternal
-    {
-        get
-        {
-            if (!_values.Any())
-            {
-                throw new ArgumentException();
-            }
-
-            return string.Join(_separator.TextValue, _values.Select(x => x.TextValue));
-        }
-    }
+    private string ValueInternal => string.Join(_separator.TextValue, _values.Select(x => x.TextValue));
 
     public IEnumerator<IChar> GetEnumerator()
     {
