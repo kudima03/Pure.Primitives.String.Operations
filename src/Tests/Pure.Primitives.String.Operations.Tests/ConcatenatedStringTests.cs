@@ -70,10 +70,10 @@ public sealed record ConcatenatedStringTests
     }
 
     [Fact]
-    public void ThrowsExceptionOnEmptyArguments()
+    public void ProduceEmptyStringOnEmptyArguments()
     {
-        IString str = new ConcatenatedString();
-        Assert.Throws<ArgumentException>(() => str.TextValue);
+        IString str = new ConcatenatedString([]);
+        Assert.Empty(str.TextValue);
     }
 
     [Fact]
