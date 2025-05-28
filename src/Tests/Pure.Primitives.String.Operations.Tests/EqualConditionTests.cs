@@ -54,7 +54,7 @@ public sealed record EqualConditionTests
     [Fact]
     public void ProduceTrueOnSingleElementInCollection()
     {
-        IBool equality = new NotEqualCondition(new EmptyString());
+        IBool equality = new EqualCondition(new EmptyString());
         Assert.True(equality.BoolValue);
     }
 
