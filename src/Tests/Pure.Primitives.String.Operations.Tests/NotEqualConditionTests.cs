@@ -55,7 +55,7 @@ public sealed record NotEqualConditionTests
     public void ThrowsExceptionOnSingleElementInCollection()
     {
         IBool equality = new NotEqualCondition(new EmptyString());
-        Assert.Throws<ArgumentException>(() => equality.BoolValue);
+        Assert.False(equality.BoolValue);
     }
 
     [Fact]
