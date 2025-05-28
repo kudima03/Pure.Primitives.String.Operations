@@ -17,18 +17,7 @@ public sealed record ConcatenatedString : IString
 
     string IString.TextValue => ValueInternal;
 
-    private string ValueInternal
-    {
-        get
-        {
-            if (!_parameters.Any())
-            {
-                throw new ArgumentException();
-            }
-
-            return string.Concat(_parameters.Select(x => x.TextValue));
-        }
-    }
+    private string ValueInternal => string.Concat(_parameters.Select(x => x.TextValue));
 
     public IEnumerator<IChar> GetEnumerator()
     {
