@@ -52,10 +52,10 @@ public sealed record WhitespaceJoinedStringTests
     }
 
     [Fact]
-    public void ThrowsExceptionOnEmptyArguments()
+    public void ProduceEmptyStringOnEmptyArguments()
     {
         IString str = new WhitespaceJoinedString([]);
-        Assert.Throws<ArgumentException>(() => str.TextValue);
+        Assert.Empty(str.TextValue);
     }
 
     [Fact]
