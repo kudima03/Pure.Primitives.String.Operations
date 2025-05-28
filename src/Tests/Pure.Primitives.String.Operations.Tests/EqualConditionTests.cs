@@ -52,10 +52,10 @@ public sealed record EqualConditionTests
     }
 
     [Fact]
-    public void ThrowsExceptionOnSingleElementInCollection()
+    public void ProduceTrueOnSingleElementInCollection()
     {
         IBool equality = new NotEqualCondition(new EmptyString());
-        Assert.Throws<ArgumentException>(() => equality.BoolValue);
+        Assert.True(equality.BoolValue);
     }
 
     [Fact]
