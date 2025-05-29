@@ -1,5 +1,6 @@
 ﻿using Pure.Primitives.Abstractions.Char;
 using Pure.Primitives.Abstractions.String;
+using System.Collections;
 using System.Text;
 
 namespace Pure.Primitives.String.Operations.Tests;
@@ -22,7 +23,7 @@ public sealed record HexStringTests
         const string sample = "Hello, world!!!";
         byte[] sampleBytes = Encoding.UTF8.GetBytes(sample);
 
-        IString str = new HexString(sampleBytes);
+        IEnumerable<IChar> str = new HexString(sampleBytes);
 
         Assert.True(Convert.ToHexString(sampleBytes).SequenceEqual(str.Select(x => x.CharValue)));
     }
@@ -33,7 +34,7 @@ public sealed record HexStringTests
         const string sample = "Hello, world!!!";
         byte[] sampleBytes = Encoding.UTF8.GetBytes(sample);
 
-        IString str = new HexString(sampleBytes);
+        IEnumerable str = new HexString(sampleBytes);
 
         ICollection<IChar> symbols = new List<IChar>();
 
