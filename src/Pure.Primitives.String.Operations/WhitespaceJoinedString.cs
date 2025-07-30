@@ -8,9 +8,7 @@ public sealed record WhitespaceJoinedString : IString
 {
     private readonly IString _joinedString;
 
-    public WhitespaceJoinedString(params IString[] values) : this(values.AsReadOnly()) { }
-
-    public WhitespaceJoinedString(IEnumerable<IString> values)
+    public WhitespaceJoinedString(params IEnumerable<IString> values)
     {
         _joinedString = new JoinedString(new WhitespaceString(), values);
     }

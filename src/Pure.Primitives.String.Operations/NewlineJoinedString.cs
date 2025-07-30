@@ -8,9 +8,7 @@ public sealed record NewLineJoinedString : IString
 {
     private readonly IString _joinedString;
 
-    public NewLineJoinedString(params IString[] values) : this(values.AsReadOnly()) { }
-
-    public NewLineJoinedString(IEnumerable<IString> values)
+    public NewLineJoinedString(params IEnumerable<IString> values)
     {
         _joinedString = new JoinedString(new NewLineString(), values);
     }
