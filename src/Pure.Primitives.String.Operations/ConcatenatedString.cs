@@ -8,9 +8,7 @@ public sealed record ConcatenatedString : IString
 {
     private readonly IEnumerable<IString> _parameters;
 
-    public ConcatenatedString(params IString[] parameters) : this(parameters.AsReadOnly()) { }
-
-    public ConcatenatedString(IEnumerable<IString> parameters)
+    public ConcatenatedString(params IEnumerable<IString> parameters)
     {
         _parameters = parameters;
     }
