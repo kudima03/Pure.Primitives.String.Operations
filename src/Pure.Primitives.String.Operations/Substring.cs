@@ -1,7 +1,7 @@
-﻿using Pure.Primitives.Abstractions.Char;
+using System.Collections;
+using Pure.Primitives.Abstractions.Char;
 using Pure.Primitives.Abstractions.Number;
 using Pure.Primitives.Abstractions.String;
-using System.Collections;
 
 namespace Pure.Primitives.String.Operations;
 
@@ -22,13 +22,8 @@ public sealed record Substring : IString
 
     string IString.TextValue => ValueInternal;
 
-    private string ValueInternal
-    {
-        get
-        {
-            return _source.TextValue.Substring(_startIndex.NumberValue, _length.NumberValue);
-        }
-    }
+    private string ValueInternal =>
+        _source.TextValue.Substring(_startIndex.NumberValue, _length.NumberValue);
 
     public IEnumerator<IChar> GetEnumerator()
     {

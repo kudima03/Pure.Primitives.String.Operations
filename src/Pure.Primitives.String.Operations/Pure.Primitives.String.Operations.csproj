@@ -1,15 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Pure.Primitives" Version="3.0.0" />
   </ItemGroup>
-
   <PropertyGroup>
     <PackageId>Pure.Primitives.String.Operations</PackageId>
     <RootNamespace>Pure.Primitives.String.Operations</RootNamespace>
@@ -18,5 +15,4 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/kudima03/Pure.Primitives.String.Operations</PackageProjectUrl>
   </PropertyGroup>
-
 </Project>

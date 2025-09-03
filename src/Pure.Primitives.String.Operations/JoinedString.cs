@@ -1,6 +1,6 @@
-﻿using Pure.Primitives.Abstractions.Char;
-using Pure.Primitives.Abstractions.String;
 using System.Collections;
+using Pure.Primitives.Abstractions.Char;
+using Pure.Primitives.Abstractions.String;
 
 namespace Pure.Primitives.String.Operations;
 
@@ -18,7 +18,8 @@ public sealed record JoinedString : IString
 
     string IString.TextValue => ValueInternal;
 
-    private string ValueInternal => string.Join(_separator.TextValue, _values.Select(x => x.TextValue));
+    private string ValueInternal =>
+        string.Join(_separator.TextValue, _values.Select(x => x.TextValue));
 
     public IEnumerator<IChar> GetEnumerator()
     {

@@ -1,6 +1,6 @@
-﻿using Pure.Primitives.Abstractions.Char;
-using Pure.Primitives.Abstractions.String;
 using System.Collections;
+using Pure.Primitives.Abstractions.Char;
+using Pure.Primitives.Abstractions.String;
 
 namespace Pure.Primitives.String.Operations;
 
@@ -13,7 +13,7 @@ public sealed record HexString : IString
         _value = value;
     }
 
-    private string InternalValue => Convert.ToHexString(_value.ToArray());
+    private string InternalValue => Convert.ToHexString([.. _value]);
 
     string IString.TextValue => InternalValue;
 

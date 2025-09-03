@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Abstractions.Bool;
 
 namespace Pure.Primitives.String.Operations.Tests;
 
@@ -12,7 +12,8 @@ public sealed record EqualConditionTests
             new String("Hello, world!"),
             new String("Hello, world!"),
             new String("Hello, world!"),
-            new String("Hello, world!"));
+            new String("Hello, world!")
+        );
 
         Assert.True(equality.BoolValue);
     }
@@ -20,7 +21,10 @@ public sealed record EqualConditionTests
     [Fact]
     public void TakesPositiveResultOnTwoSameValues()
     {
-        IBool equality = new EqualCondition(new String("Hello, world!"), new String("Hello, world!"));
+        IBool equality = new EqualCondition(
+            new String("Hello, world!"),
+            new String("Hello, world!")
+        );
 
         Assert.True(equality.BoolValue);
     }
@@ -33,7 +37,8 @@ public sealed record EqualConditionTests
             new String("Hello, world!2"),
             new String("Hello, world!3"),
             new String("Hello, world!4"),
-            new String("Hello, world!5"));
+            new String("Hello, world!5")
+        );
 
         Assert.False(equality.BoolValue);
     }
@@ -46,7 +51,8 @@ public sealed record EqualConditionTests
             new String("Hello, world!"),
             new String("Hello, world!"),
             new String("Hello, world!"),
-            new String("Hello, world!1"));
+            new String("Hello, world!1")
+        );
 
         Assert.False(equality.BoolValue);
     }
@@ -62,18 +68,22 @@ public sealed record EqualConditionTests
     public void ThrowsExceptionOnEmptyCollection()
     {
         IBool equality = new EqualCondition();
-        Assert.Throws<ArgumentException>(() => equality.BoolValue);
+        _ = Assert.Throws<ArgumentException>(() => equality.BoolValue);
     }
 
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new EqualCondition(new EmptyString()).GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new EqualCondition(new EmptyString()).GetHashCode()
+        );
     }
 
     [Fact]
     public void ThrowsExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new EqualCondition(new EmptyString()).ToString());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new EqualCondition(new EmptyString()).ToString()
+        );
     }
 }
