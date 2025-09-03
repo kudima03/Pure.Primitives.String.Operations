@@ -1,6 +1,6 @@
-﻿using Pure.Primitives.Abstractions.Char;
-using Pure.Primitives.Abstractions.String;
 using System.Collections;
+using Pure.Primitives.Abstractions.Char;
+using Pure.Primitives.Abstractions.String;
 
 namespace Pure.Primitives.String.Operations.Tests;
 
@@ -14,7 +14,10 @@ public sealed record JoinedStringTests
         const string b = "World";
         const string c = "!";
 
-        IString str = new JoinedString(new String(separator), [new String(a), new String(b), new String(c)]);
+        IString str = new JoinedString(
+            new String(separator),
+            [new String(a), new String(b), new String(c)]
+        );
         Assert.Equal(string.Join(separator, a, b, c), str.TextValue);
     }
 
@@ -26,9 +29,14 @@ public sealed record JoinedStringTests
         const string b = "World";
         const string c = "!";
 
-        IString str = new JoinedString(new String(separator), [new String(a), new String(b), new String(c)]);
+        IString str = new JoinedString(
+            new String(separator),
+            [new String(a), new String(b), new String(c)]
+        );
 
-        Assert.True(string.Join(separator, a, b, c).SequenceEqual(str.Select(x => x.CharValue)));
+        Assert.True(
+            string.Join(separator, a, b, c).SequenceEqual(str.Select(x => x.CharValue))
+        );
     }
 
     [Fact]
@@ -39,16 +47,22 @@ public sealed record JoinedStringTests
         const string b = "World";
         const string c = "!";
 
-        IEnumerable str = new JoinedString(new String(separator), [new String(a), new String(b), new String(c)]);
+        IEnumerable str = new JoinedString(
+            new String(separator),
+            [new String(a), new String(b), new String(c)]
+        );
 
-        ICollection<IChar> symbols = new List<IChar>();
+        ICollection<IChar> symbols = [];
 
         foreach (object symbol in str)
         {
             symbols.Add((symbol as IChar)!);
         }
 
-        Assert.True(string.Join(separator, a, b, c).SequenceEqual(symbols.Select(x => x.CharValue)));
+        Assert.True(
+            string.Join(separator, a, b, c)
+                .SequenceEqual(symbols.Select(x => x.CharValue))
+        );
     }
 
     [Fact]
@@ -61,12 +75,16 @@ public sealed record JoinedStringTests
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new JoinedString(new EmptyString(), []).GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new JoinedString(new EmptyString(), []).GetHashCode()
+        );
     }
 
     [Fact]
     public void ThrowsExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new JoinedString(new EmptyString(), []).ToString());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new JoinedString(new EmptyString(), []).ToString()
+        );
     }
 }

@@ -1,4 +1,4 @@
-﻿using Pure.Primitives.Abstractions.Bool;
+using Pure.Primitives.Abstractions.Bool;
 using Pure.Primitives.Abstractions.String;
 
 namespace Pure.Primitives.String.Operations;
@@ -12,18 +12,10 @@ public sealed record EqualCondition : IBool
         _values = values;
     }
 
-    bool IBool.BoolValue
-    {
-        get
-        {
-            if (!_values.Any())
-            {
-                throw new ArgumentException();
-            }
-
-            return _values.DistinctBy(x => x.TextValue).Count() == 1;
-        }
-    }
+    bool IBool.BoolValue =>
+        !_values.Any()
+            ? throw new ArgumentException()
+            : _values.DistinctBy(x => x.TextValue).Count() == 1;
 
     public override int GetHashCode()
     {

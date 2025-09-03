@@ -1,8 +1,9 @@
-﻿using Pure.Primitives.Abstractions.Char;
-using Pure.Primitives.Abstractions.String;
 using System.Collections;
+using Pure.Primitives.Abstractions.Char;
+using Pure.Primitives.Abstractions.String;
 
 namespace Pure.Primitives.String.Operations.Tests;
+
 public sealed record ConcatenatedStringTests
 {
     [Fact]
@@ -19,7 +20,8 @@ public sealed record ConcatenatedStringTests
             new String(b),
             new String(c),
             new String(d),
-            new String(e));
+            new String(e)
+        );
 
         Assert.Equal(string.Concat(a, b, c, d, e), str.TextValue);
     }
@@ -38,9 +40,12 @@ public sealed record ConcatenatedStringTests
             new String(b),
             new String(c),
             new String(d),
-            new String(e));
+            new String(e)
+        );
 
-        Assert.True(string.Concat(a, b, c, d, e).SequenceEqual(str.Select(x => x.CharValue)));
+        Assert.True(
+            string.Concat(a, b, c, d, e).SequenceEqual(str.Select(x => x.CharValue))
+        );
     }
 
     [Fact]
@@ -57,16 +62,19 @@ public sealed record ConcatenatedStringTests
             new String(b),
             new String(c),
             new String(d),
-            new String(e));
+            new String(e)
+        );
 
-        ICollection<IChar> symbols = new List<IChar>();
+        ICollection<IChar> symbols = [];
 
         foreach (object symbol in str)
         {
             symbols.Add((symbol as IChar)!);
         }
 
-        Assert.True(string.Concat(a, b, c, d, e).SequenceEqual(symbols.Select(x => x.CharValue)));
+        Assert.True(
+            string.Concat(a, b, c, d, e).SequenceEqual(symbols.Select(x => x.CharValue))
+        );
     }
 
     [Fact]
@@ -79,12 +87,16 @@ public sealed record ConcatenatedStringTests
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new ConcatenatedString().GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new ConcatenatedString().GetHashCode()
+        );
     }
 
     [Fact]
     public void ThrowsExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new ConcatenatedString().ToString());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new ConcatenatedString().ToString()
+        );
     }
 }

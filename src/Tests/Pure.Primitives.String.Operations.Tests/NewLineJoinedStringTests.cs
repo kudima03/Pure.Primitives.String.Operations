@@ -1,6 +1,6 @@
-﻿using Pure.Primitives.Abstractions.Char;
-using Pure.Primitives.Abstractions.String;
 using System.Collections;
+using Pure.Primitives.Abstractions.Char;
+using Pure.Primitives.Abstractions.String;
 
 namespace Pure.Primitives.String.Operations.Tests;
 
@@ -14,7 +14,9 @@ public sealed record NewLineJoinedStringTests
         const string b = "World";
         const string c = "!";
 
-        IString str = new NewLineJoinedString([new String(a), new String(b), new String(c)]);
+        IString str = new NewLineJoinedString(
+            [new String(a), new String(b), new String(c)]
+        );
         Assert.Equal(string.Join(separator, a, b, c), str.TextValue);
     }
 
@@ -26,9 +28,13 @@ public sealed record NewLineJoinedStringTests
         const string b = "World";
         const string c = "!";
 
-        IString str = new NewLineJoinedString([new String(a), new String(b), new String(c)]);
+        IString str = new NewLineJoinedString(
+            [new String(a), new String(b), new String(c)]
+        );
 
-        Assert.True(string.Join(separator, a, b, c).SequenceEqual(str.Select(x => x.CharValue)));
+        Assert.True(
+            string.Join(separator, a, b, c).SequenceEqual(str.Select(x => x.CharValue))
+        );
     }
 
     [Fact]
@@ -39,16 +45,21 @@ public sealed record NewLineJoinedStringTests
         const string b = "World";
         const string c = "!";
 
-        IEnumerable str = new NewLineJoinedString([new String(a), new String(b), new String(c)]);
+        IEnumerable str = new NewLineJoinedString(
+            [new String(a), new String(b), new String(c)]
+        );
 
-        ICollection<IChar> symbols = new List<IChar>();
+        ICollection<IChar> symbols = [];
 
         foreach (object symbol in str)
         {
             symbols.Add((symbol as IChar)!);
         }
 
-        Assert.True(string.Join(separator, a, b, c).SequenceEqual(symbols.Select(x => x.CharValue)));
+        Assert.True(
+            string.Join(separator, a, b, c)
+                .SequenceEqual(symbols.Select(x => x.CharValue))
+        );
     }
 
     [Fact]
@@ -61,12 +72,16 @@ public sealed record NewLineJoinedStringTests
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new NewLineJoinedString([]).GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new NewLineJoinedString([]).GetHashCode()
+        );
     }
 
     [Fact]
     public void ThrowsExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new NewLineJoinedString([]).ToString());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new NewLineJoinedString([]).ToString()
+        );
     }
 }

@@ -1,7 +1,7 @@
-﻿using Pure.Primitives.Abstractions.Char;
-using Pure.Primitives.Abstractions.String;
 using System.Collections;
 using System.Text;
+using Pure.Primitives.Abstractions.Char;
+using Pure.Primitives.Abstractions.String;
 
 namespace Pure.Primitives.String.Operations.Tests;
 
@@ -25,7 +25,9 @@ public sealed record HexStringTests
 
         IEnumerable<IChar> str = new HexString(sampleBytes);
 
-        Assert.True(Convert.ToHexString(sampleBytes).SequenceEqual(str.Select(x => x.CharValue)));
+        Assert.True(
+            Convert.ToHexString(sampleBytes).SequenceEqual(str.Select(x => x.CharValue))
+        );
     }
 
     [Fact]
@@ -36,14 +38,18 @@ public sealed record HexStringTests
 
         IEnumerable str = new HexString(sampleBytes);
 
-        ICollection<IChar> symbols = new List<IChar>();
+        ICollection<IChar> symbols = [];
 
         foreach (object symbol in str)
         {
             symbols.Add((symbol as IChar)!);
         }
 
-        Assert.True(Convert.ToHexString(sampleBytes).SequenceEqual(symbols.Select(x => x.CharValue)));
+        Assert.True(
+            Convert
+                .ToHexString(sampleBytes)
+                .SequenceEqual(symbols.Select(x => x.CharValue))
+        );
     }
 
     [Fact]
@@ -56,12 +62,12 @@ public sealed record HexStringTests
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new HexString([]).GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() => new HexString([]).GetHashCode());
     }
 
     [Fact]
     public void ThrowsExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new HexString([]).ToString());
+        _ = Assert.Throws<NotSupportedException>(() => new HexString([]).ToString());
     }
 }

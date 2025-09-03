@@ -1,7 +1,7 @@
-﻿using Pure.Primitives.Abstractions.Char;
+using System.Collections;
+using Pure.Primitives.Abstractions.Char;
 using Pure.Primitives.Abstractions.String;
 using Pure.Primitives.Number;
-using System.Collections;
 
 namespace Pure.Primitives.String.Operations.Tests;
 
@@ -31,7 +31,11 @@ public sealed record SubstringTests
 
         IString str = new Substring(source, new UShort(startIndex), new UShort(length));
 
-        Assert.True(sample.Substring(startIndex, length).SequenceEqual(str.Select(x => x.CharValue)));
+        Assert.True(
+            sample
+                .Substring(startIndex, length)
+                .SequenceEqual(str.Select(x => x.CharValue))
+        );
     }
 
     [Fact]
@@ -44,16 +48,24 @@ public sealed record SubstringTests
         const ushort startIndex = 6;
         const ushort length = 4;
 
-        IEnumerable str = new Substring(source, new UShort(startIndex), new UShort(length));
+        IEnumerable str = new Substring(
+            source,
+            new UShort(startIndex),
+            new UShort(length)
+        );
 
-        ICollection<IChar> symbols = new List<IChar>();
+        ICollection<IChar> symbols = [];
 
         foreach (object symbol in str)
         {
             symbols.Add((symbol as IChar)!);
         }
 
-        Assert.True(sample.Substring(startIndex, length).SequenceEqual(symbols.Select(x => x.CharValue)));
+        Assert.True(
+            sample
+                .Substring(startIndex, length)
+                .SequenceEqual(symbols.Select(x => x.CharValue))
+        );
     }
 
     [Fact]
@@ -65,7 +77,7 @@ public sealed record SubstringTests
         const ushort length = 7;
 
         IString str = new Substring(source, new UShort(startIndex), new UShort(length));
-        Assert.Throws<ArgumentOutOfRangeException>(() => str.TextValue);
+        _ = Assert.Throws<ArgumentOutOfRangeException>(() => str.TextValue);
     }
 
     [Fact]
@@ -77,7 +89,7 @@ public sealed record SubstringTests
         const ushort length = 4;
 
         IString str = new Substring(source, new UShort(startIndex), new UShort(length));
-        Assert.Throws<ArgumentOutOfRangeException>(() => str.TextValue);
+        _ = Assert.Throws<ArgumentOutOfRangeException>(() => str.TextValue);
     }
 
     [Fact]
@@ -91,7 +103,6 @@ public sealed record SubstringTests
         IString str = new Substring(source, new UShort(startIndex), new UShort(length));
         Assert.Equal(string.Empty, str.TextValue);
     }
-
 
     [Fact]
     public void TakesEmptySubstringFromEmptyStringOnZeroLength()
@@ -108,12 +119,16 @@ public sealed record SubstringTests
     [Fact]
     public void ThrowsExceptionOnGetHashCode()
     {
-        Assert.Throws<NotSupportedException>(() => new Substring(new EmptyString(), new UShort(0), new UShort(0)).GetHashCode());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new Substring(new EmptyString(), new UShort(0), new UShort(0)).GetHashCode()
+        );
     }
 
     [Fact]
     public void ThrowsExceptionOnToString()
     {
-        Assert.Throws<NotSupportedException>(() => new Substring(new EmptyString(), new UShort(0), new UShort(0)).ToString());
+        _ = Assert.Throws<NotSupportedException>(() =>
+            new Substring(new EmptyString(), new UShort(0), new UShort(0)).ToString()
+        );
     }
 }
