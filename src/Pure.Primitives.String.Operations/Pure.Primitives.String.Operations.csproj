@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Pure.Primitives" Version="3.0.0" />
+    <PackageReference Include="Pure.Primitives" Version="3.1.1" />
   </ItemGroup>
   <PropertyGroup>
     <PackageId>Pure.Primitives.String.Operations</PackageId>
