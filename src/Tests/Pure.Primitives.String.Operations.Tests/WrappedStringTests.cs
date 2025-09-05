@@ -16,7 +16,7 @@ public sealed record WrappedStringTests
     [Fact]
     public void EnumeratesAsUntyped()
     {
-        IEnumerable str = new NewLineJoinedString(
+        IEnumerable str = new WrappedString(
             new SingleQuoteString(),
             new String("value"),
             new RightSquareBracketString()
