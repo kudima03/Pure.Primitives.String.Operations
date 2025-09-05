@@ -12,10 +12,8 @@ public sealed record WrappedString : IString
 
     private readonly IString _suffix;
 
-    public WrappedString(IString encloser, IString wrappedValue) : this(encloser, wrappedValue, encloser)
-    {
-        
-    }
+    public WrappedString(IString encloser, IString wrappedValue)
+        : this(encloser, wrappedValue, encloser) { }
 
     public WrappedString(IString prefix, IString wrappedValue, IString suffix)
     {
