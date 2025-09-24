@@ -8,6 +8,7 @@
     <EnableAotAnalyzer>true</EnableAotAnalyzer>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="9.0.9" />
     <PackageReference Include="Pure.Primitives" Version="3.3.0" />
   </ItemGroup>
   <PropertyGroup>
