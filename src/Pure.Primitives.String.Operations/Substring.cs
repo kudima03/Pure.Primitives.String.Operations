@@ -20,14 +20,12 @@ public sealed record Substring : IString
         _length = length;
     }
 
-    string IString.TextValue => ValueInternal;
-
-    private string ValueInternal =>
+    public string TextValue =>
         _source.TextValue.Substring(_startIndex.NumberValue, _length.NumberValue);
 
     public IEnumerator<IChar> GetEnumerator()
     {
-        return ValueInternal.Select(symbol => new Char.Char(symbol)).GetEnumerator();
+        return TextValue.Select(symbol => new Char.Char(symbol)).GetEnumerator();
     }
 
     public override int GetHashCode()
