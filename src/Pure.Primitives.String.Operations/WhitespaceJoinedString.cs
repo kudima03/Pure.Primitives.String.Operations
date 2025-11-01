@@ -13,7 +13,7 @@ public sealed record WhitespaceJoinedString : IString
         _joinedString = new JoinedString(new WhitespaceString(), values);
     }
 
-    string IString.TextValue => _joinedString.TextValue;
+    public string TextValue => _joinedString.TextValue;
 
     public IEnumerator<IChar> GetEnumerator()
     {

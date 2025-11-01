@@ -16,14 +16,12 @@ public sealed record JoinedString : IString
         _values = values;
     }
 
-    string IString.TextValue => ValueInternal;
-
-    private string ValueInternal =>
+    public string TextValue =>
         string.Join(_separator.TextValue, _values.Select(x => x.TextValue));
 
     public IEnumerator<IChar> GetEnumerator()
     {
-        return ValueInternal.Select(symbol => new Char.Char(symbol)).GetEnumerator();
+        return TextValue.Select(symbol => new Char.Char(symbol)).GetEnumerator();
     }
 
     public override int GetHashCode()

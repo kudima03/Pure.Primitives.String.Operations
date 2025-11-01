@@ -13,13 +13,11 @@ public sealed record ConcatenatedString : IString
         _parameters = parameters;
     }
 
-    string IString.TextValue => ValueInternal;
-
-    private string ValueInternal => string.Concat(_parameters.Select(x => x.TextValue));
+    public string TextValue => string.Concat(_parameters.Select(x => x.TextValue));
 
     public IEnumerator<IChar> GetEnumerator()
     {
-        return ValueInternal.Select(symbol => new Char.Char(symbol)).GetEnumerator();
+        return TextValue.Select(symbol => new Char.Char(symbol)).GetEnumerator();
     }
 
     public override int GetHashCode()

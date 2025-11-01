@@ -13,13 +13,11 @@ public sealed record HexString : IString
         _value = value;
     }
 
-    private string InternalValue => Convert.ToHexString([.. _value]);
-
-    string IString.TextValue => InternalValue;
+    public string TextValue => Convert.ToHexString([.. _value]);
 
     public IEnumerator<IChar> GetEnumerator()
     {
-        return InternalValue.Select(symbol => new Char.Char(symbol)).GetEnumerator();
+        return TextValue.Select(symbol => new Char.Char(symbol)).GetEnumerator();
     }
 
     public override int GetHashCode()
