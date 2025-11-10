@@ -7,8 +7,8 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="9.0.10" />
-    <PackageReference Include="Pure.Primitives" Version="3.4.0" />
-    <PackageReference Include="Pure.Primitives.Abstractions" Version="4.1.0" />
+    <PackageReference Include="Pure.Primitives" Version="3.5.0" />
+    <PackageReference Include="Pure.Primitives.Abstractions" Version="4.2.0" />
   </ItemGroup>
   <PropertyGroup>
     <PackageId>Pure.Primitives.String.Operations</PackageId>
