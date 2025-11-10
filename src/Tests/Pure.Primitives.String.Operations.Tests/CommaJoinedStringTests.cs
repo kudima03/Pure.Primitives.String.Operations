@@ -4,7 +4,7 @@ using Pure.Primitives.Abstractions.String;
 
 namespace Pure.Primitives.String.Operations.Tests;
 
-public sealed record CommaSeparatedStringTests
+public sealed record CommaJoinedStringTests
 {
     [Fact]
     public void JoinCorrectly()
@@ -14,7 +14,7 @@ public sealed record CommaSeparatedStringTests
         const string b = "World";
         const string c = "!";
 
-        IString str = new CommaSeparatedString(
+        IString str = new CommaJoinedString(
             [new String(a), new String(b), new String(c)]
         );
         Assert.Equal(string.Join(separator, a, b, c), str.TextValue);
@@ -27,7 +27,7 @@ public sealed record CommaSeparatedStringTests
         const string b = "";
         const string c = "World";
 
-        IString str = new CommaSeparatedString(
+        IString str = new CommaJoinedString(
             [new String(a), new String(b), new String(c)]
         );
         Assert.Equal("Hello,,World", str.TextValue);
@@ -37,7 +37,7 @@ public sealed record CommaSeparatedStringTests
     public void JoinSingleElement()
     {
         const string a = "Hello";
-        IString str = new CommaSeparatedString([new String(a)]);
+        IString str = new CommaJoinedString([new String(a)]);
         Assert.Equal(a, str.TextValue);
     }
 
@@ -49,7 +49,7 @@ public sealed record CommaSeparatedStringTests
         const string b = "World";
         const string c = "!";
 
-        IString str = new CommaSeparatedString(
+        IString str = new CommaJoinedString(
             [new String(a), new String(b), new String(c)]
         );
 
@@ -66,7 +66,7 @@ public sealed record CommaSeparatedStringTests
         const string b = "World";
         const string c = "!";
 
-        IEnumerable str = new CommaSeparatedString(
+        IEnumerable str = new CommaJoinedString(
             [new String(a), new String(b), new String(c)]
         );
 
@@ -86,7 +86,7 @@ public sealed record CommaSeparatedStringTests
     [Fact]
     public void ProduceEmptyStringOnEmptyArguments()
     {
-        IString str = new CommaSeparatedString([]);
+        IString str = new CommaJoinedString([]);
         Assert.Empty(str.TextValue);
     }
 
@@ -94,7 +94,7 @@ public sealed record CommaSeparatedStringTests
     public void ThrowsExceptionOnGetHashCode()
     {
         _ = Assert.Throws<NotSupportedException>(() =>
-            new CommaSeparatedString([]).GetHashCode()
+            new CommaJoinedString([]).GetHashCode()
         );
     }
 
@@ -102,7 +102,7 @@ public sealed record CommaSeparatedStringTests
     public void ThrowsExceptionOnToString()
     {
         _ = Assert.Throws<NotSupportedException>(() =>
-            new CommaSeparatedString([]).ToString()
+            new CommaJoinedString([]).ToString()
         );
     }
 }
