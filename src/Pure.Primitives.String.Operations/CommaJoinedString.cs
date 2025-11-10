@@ -4,11 +4,11 @@ using Pure.Primitives.Abstractions.String;
 
 namespace Pure.Primitives.String.Operations;
 
-public sealed record CommaSeparatedString : IString
+public sealed record CommaJoinedString : IString
 {
     private readonly IString _joinedString;
 
-    public CommaSeparatedString(params IEnumerable<IString> values)
+    public CommaJoinedString(params IEnumerable<IString> values)
     {
         _joinedString = new JoinedString(new CommaString(), values);
     }
