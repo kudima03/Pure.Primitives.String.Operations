@@ -10,7 +10,7 @@ public sealed record SemicolonJoinedString : IString
 
     public SemicolonJoinedString(params IEnumerable<IString> values)
     {
-        _joinedString = new JoinedString(new ColonString(), values);
+        _joinedString = new JoinedString(new SemicolonString(), values);
     }
 
     public string TextValue => _joinedString.TextValue;

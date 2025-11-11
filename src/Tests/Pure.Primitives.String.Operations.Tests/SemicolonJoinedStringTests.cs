@@ -61,7 +61,7 @@ public sealed record SemicolonJoinedStringTests
     [Fact]
     public void EnumeratesAsUntyped()
     {
-        string separator = ":";
+        string separator = ";";
         const string a = "Hello";
         const string b = "World";
         const string c = "!";
