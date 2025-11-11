@@ -8,10 +8,13 @@ public sealed record CommaJoinedString : IString
 {
     private readonly IString _joinedString;
 
-    public CommaJoinedString(params IEnumerable<IString> values)
+    private CommaJoinedString(IString joinedString)
     {
-        _joinedString = new JoinedString(new CommaString(), values);
+        _joinedString = joinedString;
     }
+    public CommaJoinedString(params IEnumerable<IString> values) :
+            this(new JoinedString(new CommaString(), values))
+    { }
 
     public string TextValue => _joinedString.TextValue;
 
