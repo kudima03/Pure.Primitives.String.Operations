@@ -8,10 +8,14 @@ public sealed record SemicolonJoinedString : IString
 {
     private readonly IString _joinedString;
 
-    public SemicolonJoinedString(params IEnumerable<IString> values)
+    private SemicolonJoinedString(IString joinedString)
     {
-        _joinedString = new JoinedString(new SemicolonString(), values);
+        _joinedString = joinedString;
     }
+
+    public SemicolonJoinedString(params IEnumerable<IString> values) :
+        this(new JoinedString(new SemicolonString(), values))
+    { }
 
     public string TextValue => _joinedString.TextValue;
 
