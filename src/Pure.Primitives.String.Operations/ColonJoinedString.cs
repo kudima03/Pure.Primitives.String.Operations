@@ -13,9 +13,8 @@ public sealed record ColonJoinedString : IString
         _joinedString = joinedString;
     }
 
-    public ColonJoinedString(params IEnumerable<IString> values) :
-        this(new JoinedString(new ColonString(), values))
-    { }
+    public ColonJoinedString(params IEnumerable<IString> values)
+        : this(new JoinedString(new ColonString(), values)) { }
 
     public string TextValue => _joinedString.TextValue;
 

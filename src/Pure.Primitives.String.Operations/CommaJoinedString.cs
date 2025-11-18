@@ -12,9 +12,9 @@ public sealed record CommaJoinedString : IString
     {
         _joinedString = joinedString;
     }
-    public CommaJoinedString(params IEnumerable<IString> values) :
-            this(new JoinedString(new CommaString(), values))
-    { }
+
+    public CommaJoinedString(params IEnumerable<IString> values)
+        : this(new JoinedString(new CommaString(), values)) { }
 
     public string TextValue => _joinedString.TextValue;
 
