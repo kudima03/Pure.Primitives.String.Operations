@@ -9,7 +9,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="9.0.11" />
     <PackageReference Include="Pure.Primitives" Version="3.6.1" />
-    <PackageReference Include="Pure.Primitives.Abstractions" Version="4.3.0" />
   </ItemGroup>
   <PropertyGroup>
     <PackageId>Pure.Primitives.String.Operations</PackageId>
