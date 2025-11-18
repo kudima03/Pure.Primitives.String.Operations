@@ -13,9 +13,8 @@ public sealed record SemicolonJoinedString : IString
         _joinedString = joinedString;
     }
 
-    public SemicolonJoinedString(params IEnumerable<IString> values) :
-        this(new JoinedString(new SemicolonString(), values))
-    { }
+    public SemicolonJoinedString(params IEnumerable<IString> values)
+        : this(new JoinedString(new SemicolonString(), values)) { }
 
     public string TextValue => _joinedString.TextValue;
 
