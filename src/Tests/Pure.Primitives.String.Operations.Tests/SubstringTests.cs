@@ -8,6 +8,20 @@ namespace Pure.Primitives.String.Operations.Tests;
 public sealed record SubstringTests
 {
     [Fact]
+    public void EqualsToConstructorWithZeroStartIndex()
+    {
+        const string sample = "Hello, world!";
+        IString source = new String(sample);
+
+        const ushort length = 5;
+
+        IString expected = new Substring(source, new UShort(0), new UShort(length));
+        IString actual = new Substring(source, new UShort(length));
+
+        Assert.Equal(expected.TextValue, actual.TextValue);
+    }
+
+    [Fact]
     public void TakesSubstring()
     {
         IString source = new String("Hello, word!");
