@@ -2,6 +2,7 @@ using System.Collections;
 using Pure.Primitives.Abstractions.Char;
 using Pure.Primitives.Abstractions.Number;
 using Pure.Primitives.Abstractions.String;
+using Pure.Primitives.Number;
 
 namespace Pure.Primitives.String.Operations;
 
@@ -12,6 +13,10 @@ public sealed record Substring : IString
     private readonly INumber<ushort> _startIndex;
 
     private readonly INumber<ushort> _length;
+
+    public Substring(IString source, INumber<ushort> length)
+        : this(source, new UShort(0), length)
+    { }
 
     public Substring(IString source, INumber<ushort> startIndex, INumber<ushort> length)
     {
