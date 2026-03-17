@@ -8,17 +8,15 @@ namespace Pure.Primitives.String.Operations.Tests;
 public sealed record SubstringTests
 {
     [Fact]
-    public void EqualsToConstructorWithZeroStartIndex()
+    public void TakesSubstringWhenOnlyLengthProvided()
     {
-        const string sample = "Hello, world!";
-        IString source = new String(sample);
+        IString source = new String("Hello, world!");
 
-        const ushort length = 5;
+        const ushort length = 4;
 
-        IString expected = new Substring(source, new UShort(0), new UShort(length));
-        IString actual = new Substring(source, new UShort(length));
+        IString str = new Substring(source, new UShort(length));
 
-        Assert.Equal(expected.TextValue, actual.TextValue);
+        Assert.Equal(source.TextValue[..length], str.TextValue);
     }
 
     [Fact]
