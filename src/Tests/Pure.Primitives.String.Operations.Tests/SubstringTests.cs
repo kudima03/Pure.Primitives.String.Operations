@@ -8,6 +8,18 @@ namespace Pure.Primitives.String.Operations.Tests;
 public sealed record SubstringTests
 {
     [Fact]
+    public void TakesSubstringWhenOnlyLengthProvided()
+    {
+        IString source = new String("Hello, world!");
+
+        const ushort length = 4;
+
+        IString str = new Substring(source, new UShort(length));
+
+        Assert.Equal(source.TextValue[..length], str.TextValue);
+    }
+
+    [Fact]
     public void TakesSubstring()
     {
         IString source = new String("Hello, word!");
