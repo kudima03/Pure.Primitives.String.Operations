@@ -16,5 +16,7 @@
     <Authors>Dmitry Kurochkin</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/kudima03/Pure.Primitives.String.Operations</PackageProjectUrl>
+    <EnablePackageValidation>true</EnablePackageValidation>
+    <PackageValidationBaselineVersion>1.4.1</PackageValidationBaselineVersion>
   </PropertyGroup>
 </Project>
