@@ -5,6 +5,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsAotCompatible>true</IsAotCompatible>
+    <EnablePackageValidation>true</EnablePackageValidation>
+    <PackageValidationBaselineVersion>1.4.1</PackageValidationBaselineVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Pure.Primitives" Version="3.6.2" />
