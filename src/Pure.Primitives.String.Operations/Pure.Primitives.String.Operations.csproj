@@ -9,7 +9,7 @@
     <PackageValidationBaselineVersion>1.4.1</PackageValidationBaselineVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Pure.Primitives" Version="3.6.2" />
+    <PackageReference Include="Pure.Primitives" Version="3.6.3" />
   </ItemGroup>
   <PropertyGroup>
     <PackageId>Pure.Primitives.String.Operations</PackageId>
