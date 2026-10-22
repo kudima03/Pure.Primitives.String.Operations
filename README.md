@@ -9,7 +9,7 @@ String operations for **Pure** `IString` primitives — composable, immutable va
 
 ## Overview
 
-`Pure.Primitives.String.Operations` provides sealed record types that perform concatenation, joining, slicing, encoding, and comparison operations over `IString` values. All types return either `IString` or `IBool`, keeping results composable within the Pure type system.
+`Pure.Primitives.String.Operations` provides sealed record types that perform concatenation, joining, slicing, trimming, encoding, measuring, and comparison operations over `IString` values. All types return `IString`, `IBool`, or `INumber<int>`, keeping results composable within the Pure type system.
 
 ## Types
 
@@ -25,6 +25,20 @@ String operations for **Pure** `IString` primitives — composable, immutable va
 | `WrappedString` | Wraps a string with prefix and suffix delimiters |
 | `Substring` | Returns a slice of an `IString` |
 | `HexString` | Encodes a byte sequence as a hex `IString` |
+| `TrimmedString` | Removes leading and trailing whitespace |
+| `TextBefore` | Part before the first occurrence of a separator (ordinal) |
+| `TextAfter` | Part after the first occurrence of a separator (ordinal) |
+| `TextBeforeLast` | Part before the last occurrence of a separator (ordinal) |
+| `TextAfterLast` | Part after the last occurrence of a separator (ordinal) |
+| `TextWithoutPrefix` | Removes a prefix the text must start with (ordinal) |
+
+`TextBefore`, `TextAfter`, `TextBeforeLast`, and `TextAfterLast` throw `ArgumentException` when the separator is absent; an empty result (separator at the start or end) is valid. `TextWithoutPrefix` throws `ArgumentException` when the text does not start with the prefix.
+
+### Number-returning (`INumber<int>`)
+
+| Type | Description |
+|------|-------------|
+| `TextLength` | Number of characters in an `IString` |
 
 ### Condition-returning (`IBool`)
 
@@ -32,7 +46,16 @@ String operations for **Pure** `IString` primitives — composable, immutable va
 |------|-----------|
 | `EqualCondition` | All supplied `IString` values are equal |
 | `NotEqualCondition` | Not all supplied `IString` values are equal |
+| `EmptyTextCondition` | All supplied `IString` values are empty |
+| `BlankTextCondition` | All supplied `IString` values are empty or whitespace-only |
+| `TextContainingWhitespaceCondition` | All supplied `IString` values contain a whitespace character |
+| `AsciiWordCharactersCondition` | All supplied `IString` values consist only of ASCII letters, digits, and `_` (an empty value qualifies) |
+| `StartsWithCondition` | The text starts with the prefix (ordinal) |
+| `TextLongerThanCondition` | The text has more characters than the limit |
+| `TextContainingAnyCharCondition` | The text contains at least one of the given characters |
+
+Conditions taking a set of values throw `ArgumentException` when no values are supplied.
 
 ## Dependencies
 
-- [`Pure.Primitives.Abstractions`](https://github.com/kudima03/Pure.Primitives.Abstractions) — `IString` and `IBool` interfaces
+- [`Pure.Primitives.Abstractions`](https://github.com/kudima03/Pure.Primitives.Abstractions) — `IString`, `IBool`, and `INumber<T>` interfaces
