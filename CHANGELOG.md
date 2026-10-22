@@ -6,6 +6,39 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [Unreleased]
+
+### Added
+
+- **`TextLength`** — `INumber<int>` with the number of characters of a
+  text.
+- **`TrimmedString`** — a text without its leading and trailing
+  whitespace.
+- **`TextBefore`** / **`TextAfter`** — the part of a text before / after
+  the first occurrence of a separator (ordinal).
+- **`TextBeforeLast`** / **`TextAfterLast`** — the part of a text before
+  / after the last occurrence of a separator (ordinal).
+  These four throw `ArgumentException` when the separator is absent; an
+  empty result is valid.
+- **`TextWithoutPrefix`** — a text without a prefix it starts with
+  (ordinal); throws `ArgumentException` when the text does not start
+  with the prefix.
+- **`EmptyTextCondition`** — `IBool` that is `true` when all given
+  values are empty.
+- **`BlankTextCondition`** — `IBool` that is `true` when all given
+  values are empty or whitespace-only.
+- **`TextContainingWhitespaceCondition`** — `IBool` that is `true` when
+  all given values contain a whitespace character.
+- **`AsciiWordCharactersCondition`** — `IBool` that is `true` when all
+  given values consist only of ASCII letters, digits, and `_` (an empty
+  value qualifies).
+- **`StartsWithCondition`** — `IBool` that is `true` when a text starts
+  with a prefix (ordinal).
+- **`TextLongerThanCondition`** — `IBool` that is `true` when a text has
+  more characters than a limit.
+- **`TextContainingAnyCharCondition`** — `IBool` that is `true` when a
+  text contains at least one of the given characters.
+
 ## [1.6.0] — 2026-10-22
 
 ### Changed
