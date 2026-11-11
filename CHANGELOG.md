@@ -6,6 +6,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [1.8.0] — 2026-11-11
+
+### Added
+
+- Added support for **.NET 11**.
+
+### Changed
+
+- Updated the **Pure.Primitives** dependency from 3.7.0 to 3.8.0.
+
 ## [1.7.0] — 2026-10-22
 
 ### Added
